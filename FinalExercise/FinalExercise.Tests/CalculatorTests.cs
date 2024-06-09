@@ -12,7 +12,13 @@ namespace FinalExercise.Tests
             var calculator = new Calculator();
             Assert.That(calculator.Additional(150,50)==200);
         }
-        
+        [Test]
+        public void AdditionalMustReturnOverflowException()
+        {
+            var calculator = new Calculator();
+            Assert.Throws<OverflowException>(()=> calculator.Additional(int.MaxValue, 50));
+        }
+
         [Test]
         public void SubtractionMustReturnCorrectValue()
         {
@@ -20,12 +26,24 @@ namespace FinalExercise.Tests
             Assert.True(calculator.Subtraction(150,50)==100);
         }
         [Test]
+        public void SubtractionMustReturnOverflowException()
+        {
+            var calculator = new Calculator();
+            Assert.Throws<OverflowException>(()=>calculator.Subtraction(int.MinValue,50));
+        }
+        [Test]
         public void MiltiplicationMustReturnCorrectValue()
         {
             var calculator = new Calculator();
             Assert.That(calculator.Miltiplication(150,50)==7500);
         }
-        
+        [Test]
+        public void MiltiplicationMustReturnOverflowException()
+        {
+            var calculator = new Calculator();
+            Assert.Throws<OverflowException>(()=>calculator.Miltiplication(1073741823,3));
+        }
+
         [Test]
         public void DivisionMustReturnCorrectValue()
         {
